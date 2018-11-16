@@ -29,20 +29,14 @@ function setStaticCacheHeader(res) {
     };
 }
 
-process.stderr.write('TESTING STDERR1\n');
-process.stdout.write('TESTING STDOUT\n');
-
 // Allow other handlers to set things up so that this is last
 // console.log('Process env', process.env);
 if (process.env.SERVE_WP_BUNDLE) {
     Meteor.startup(() => {
-        console.log('Setting up raw connect handlers');
         WebApp.rawConnectHandlers.use((req, res, next) => {
-            console.log('Received request', req.url);
             const ext = path.extname(req.url);
             if (req.method === 'GET' && !ext) {
                 // If your main file is called something other than "index.html" - change this file
-                console.log('Redirecting to index.html');
                 req.url = ASSET_PATH + 'index.html';
             } else if (ext === '.map') {
                 // Consider access restrictions if you want
