@@ -8,7 +8,14 @@
     "wp-meteor-server": "cd wp-meteor-server; meteor",
     "start": "concurrently -k -n \"webpack,meteor\" -c \"blue,magenta\" \"npm run wp-dev-server\" \"npm run wp-meteor-server\"",
     "clean": "rm -rf build/*",
-    "build-meteor": "cd wp-meteor-server; meteor build --directory ../build/wp-meteor"
+    "build-client-adv": "npx webpack --config advanced.webpack.config",
+    "build-meteor-only": "cd wp-meteor-server; meteor build --directory ../build/wp-meteor",
+    "build-docker-simple": "docker build -f advanced.debian.Dockerfile . -t miwp-demo",
+    "build-docker-adv-debian": "docker build -f advanced.debian.Dockerfile . -t miwp-demo",
+    "build-docker-adv-alpine": "docker build -f advanced.alpine.Dockerfile . -t miwp-demo",
+    "start-docker-simple": "docker run -it -p 3000:80 --env-file docker.env miwp-demo",
+    "start-docker-adv-debian": "docker run -it -p 3000:3000 --env-file docker.env miwp-demo",
+    "start-docker-adv-alpine": "docker run -it -p 3000:3000 --env-file docker.env miwp-demo"
   },
   "author": "Staffan Eketorp <staffan.eketorp@gmail.com>",
   "license": "MIT",

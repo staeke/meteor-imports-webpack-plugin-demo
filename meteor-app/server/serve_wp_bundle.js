@@ -14,7 +14,7 @@ import {WebApp} from 'meteor/webapp';
 // Match the following with webpack config
 
 // This regex matches all static files with a hashed extension. Corresponds to webpack's file loader options
-const REGEX_HASHED_ASSET = /[a-z0-9]{20,32}.(?:js|css|was|jpg|jpeg|gif|png|svg|woff|woff2|eot|mp4|mp3|wav|aiff|mpg|mpeg)/;
+const REGEX_HASHED_ASSET = /\w\.[a-z0-9]{20,32}.(?:js|css|was|jpg|jpeg|gif|png|svg|woff|woff2|eot|mp4|mp3|wav|aiff|mpg|mpeg)/;
 // The webpack (WP) output asset path directory.
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -33,14 +33,16 @@ function setStaticCacheHeader(res) {
 // console.log('Process env', process.env);
 if (process.env.SERVE_WP_BUNDLE) {
     Meteor.startup(() => {
+        console.log('Setting up serving of webpack assets for path', ASSET_PATH);
         WebApp.rawConnectHandlers.use((req, res, next) => {
             const ext = path.extname(req.url);
             if (req.method === 'GET' && !ext) {
                 // If your main file is called something other than "index.html" - change this file
-                req.url = ASSET_PATH + 'index.html';
+                console.log('Serving webpack index.html');
+                req.url = ASSET_PATH + '/index.html';
             } else if (ext === '.map') {
                 // Consider access restrictions if you want
-            } else if (ext.startsWith(ASSET_PATH) && req.url.match(REGEX_HASHED_ASSET)) {
+            } else if (ext.startsWith(ASSET_PATH + '/') && req.url.match(REGEX_HASHED_ASSET)) {
                 setStaticCacheHeader(res);
             }
             next();
