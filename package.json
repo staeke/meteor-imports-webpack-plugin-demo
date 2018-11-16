@@ -1,9 +1,8 @@
 {
   "name": "meteor-imports-webpack-plugin-demo",
   "version": "1.0.0",
-  "repository": "https://github.com/jedwards1211/meteor-imports-webpack-plugin",
+  "repository": "https://github.com/staeke/meteor-imports-webpack-plugin/demo",
   "description": "A demo app for the Meteor imports webpack plugin",
-  "main": "webpack.config.js",
   "scripts": {
     "wp-dev-server": "node --preserve-symlinks node_modules/.bin/webpack-dev-server --port 4000 --hot --inline --config webpack.config.js",
     "wp-meteor-server": "cd wp-meteor-server; meteor",
