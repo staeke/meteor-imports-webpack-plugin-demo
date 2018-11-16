@@ -70,7 +70,7 @@ RUN cd meteor-app && \
 ###### CLIENT BUILDER (webpack)
 ###############################
 FROM miwp-builder-base AS miwp-builder-client
-ARG ASSET_PATH=/wp/
+ARG ASSET_PATH=/wp
 
 # Install build time node_modules (such as webpack)
 COPY --chown=meteor package*.json ./
@@ -83,7 +83,7 @@ COPY --chown=meteor /meteor-app/client/ ./meteor-app/client/
 COPY --chown=meteor /advanced.webpack.config.js ./
 RUN export METEOR_IMPORTS_AUTOUPDATE=1 && \
     export NODE_ENV=production && \
-    export ASSET_PATH=$ASSET_PATH && \
+    export ASSET_PATH=${ASSET_PATH} && \
     export METEOR_BUILD_DIR=/home/meteor/build/pkg-only && \
     meteor npx webpack --config ./advanced.webpack.config.js
 
@@ -94,7 +94,7 @@ RUN export METEOR_IMPORTS_AUTOUPDATE=1 && \
 FROM miwp-base
 ARG NODE_VERSION=8.9.4
 # Match with serve_wp_bundle.js
-ARG ASSET_PATH=/wp/
+ARG ASSET_PATH=/wp
 
 USER meteor
 
@@ -108,10 +108,10 @@ EXPOSE 3000
 COPY --chown=meteor --from=miwp-builder-base /home/meteor/build/pkg-only/bundle ./
 # Copy our built server and client
 COPY --chown=meteor --from=miwp-builder-server /home/meteor/build/app/bundle ./
-COPY --chown=meteor --from=miwp-builder-client /home/meteor/build/client/ ./programs/web.browser/app/wp
+COPY --chown=meteor --from=miwp-builder-client /home/meteor/build/client/ ./programs/web.browser/app${ASSET_PATH}
+ENV ASSET_PATH=${ASSET_PATH}
 ENTRYPOINT export AUTOUPDATE_VERSION=$(cat ./programs/web.browser/app/wp/autoupdate_version) && \
     export NODE_ENV=production && \
     export SERVE_WP_BUNDLE=1 && \
-    export ASSET_PATH=$ASSET_PATH && \
     export PORT=3000 && \
     node main.js
