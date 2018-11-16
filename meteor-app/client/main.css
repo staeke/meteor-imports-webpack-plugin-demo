@@ -1,0 +1,13 @@
+body {
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.logos {
+    font-size: 20px;
+}
+
+.logos img {
+    width: 200px;
+    vertical-align: middle;
+}

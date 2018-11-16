@@ -1,0 +1,49 @@
+
+Even with METEOR_ALLOW_SUPERUSER or --allow-superuser, permissions in your app
+directory will be incorrect if you ever attempt to perform any Meteor tasks as
+a normal user. If you need to fix your permissions, run the following command
+from the root of your project:
+
+  sudo chown -Rh <username> .meteor/local
+
+
+Even with METEOR_ALLOW_SUPERUSER or --allow-superuser, permissions in your app
+directory will be incorrect if you ever attempt to perform any Meteor tasks as
+a normal user. If you need to fix your permissions, run the following command
+from the root of your project:
+
+  sudo chown -Rh <username> .meteor/local
+
+[[[[[ /meteor-app ]]]]]
+
+=> Started proxy.
+=> Meteor 1.8 is available. Update this project with 'meteor update'.
+=> Started MongoDB.
+[34mI20181024-07:59:05.891(0)? [39mThis is the private demo-pkg.js
+[34mI20181024-07:59:05.922(0)? [39mProcess env { HOSTNAME: 'eb245bdab983',
+[34mI20181024-07:59:05.923(0)? [39m  TERM: 'xterm',
+[34mI20181024-07:59:05.924(0)? [39m  OLDPWD: '/root/.meteor/packages/meteor-tool/1.7.0_5/mt-os.linux.x86_64',
+[34mI20181024-07:59:05.925(0)? [39m  PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+[34mI20181024-07:59:05.925(0)? [39m  PWD: '/meteor-app',
+[34mI20181024-07:59:05.926(0)? [39m  HOME: '/root',
+[34mI20181024-07:59:05.927(0)? [39m  SHLVL: '1',
+[34mI20181024-07:59:05.928(0)? [39m  METEOR_ALLOW_SUPERUSER: '1',
+[34mI20181024-07:59:05.928(0)? [39m  NODE_ENV: 'development',
+[34mI20181024-07:59:05.929(0)? [39m  PORT: '25954',
+[34mI20181024-07:59:05.930(0)? [39m  ROOT_URL: 'http://localhost:80/',
+[34mI20181024-07:59:05.931(0)? [39m  MONGO_URL: 'mongodb://127.0.0.1:81/meteor',
+[34mI20181024-07:59:05.932(0)? [39m  MOBILE_DDP_URL: 'http://172.17.0.4:80/',
+[34mI20181024-07:59:05.933(0)? [39m  MOBILE_ROOT_URL: 'http://172.17.0.4:80/',
+[34mI20181024-07:59:05.937(0)? [39m  MONGO_OPLOG_URL: 'mongodb://127.0.0.1:81/local',
+[34mI20181024-07:59:05.938(0)? [39m  APP_ID: 'i226pvkv8y1d.oexu8qo8socu',
+[34mI20181024-07:59:05.938(0)? [39m  HTTP_FORWARDED_COUNT: '1',
+[34mI20181024-07:59:05.939(0)? [39m  METEOR_SHELL_DIR: '/meteor-app/.meteor/local/shell',
+[34mI20181024-07:59:05.940(0)? [39m  METEOR_PARENT_PID: '4015',
+[34mI20181024-07:59:05.945(0)? [39m  METEOR_PRINT_ON_LISTEN: 'true',
+[34mI20181024-07:59:05.946(0)? [39m  NODE_PATH: '',
+[34mI20181024-07:59:05.946(0)? [39m  TEST_METADATA: '{}' }
+[34mI20181024-07:59:05.947(0)? [39mThis code is run both on the server and client2. Meteor.isClient: false
+[34mI20181024-07:59:05.948(0)? [39mThe server is starting
+=> Started your app.
+
+=> App running at: http://localhost:80/

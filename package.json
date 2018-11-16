@@ -1,0 +1,37 @@
+{
+  "name": "meteor-imports-webpack-plugin-demo",
+  "version": "1.0.0",
+  "repository": "https://github.com/jedwards1211/meteor-imports-webpack-plugin",
+  "description": "A demo app for the Meteor imports webpack plugin",
+  "main": "webpack.config.js",
+  "scripts": {
+    "wp-dev-server": "node --preserve-symlinks node_modules/.bin/webpack-dev-server --port 4000 --hot --inline --config webpack.config.js",
+    "wp-meteor-server": "cd wp-meteor-server; meteor",
+    "start": "concurrently -k -n \"webpack,meteor\" -c \"blue,magenta\" \"npm run wp-dev-server\" \"npm run wp-meteor-server\"",
+    "clean": "rm -rf build/*",
+    "build-meteor": "cd wp-meteor-server; meteor build --directory ../build/wp-meteor"
+  },
+  "author": "Staffan Eketorp <staffan.eketorp@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "7.0.0-beta.55",
+    "babel-loader": "^8.0.2",
+    "concurrently": "^4.0.1",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^1.9.1",
+    "meteor-imports-webpack-plugin": "github:staeke/meteor-imports-webpack-plugin#d02b362b63aa2cdf3107393a1bb2301e95b45289",
+    "mini-css-extract-plugin": "^0.4.4",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  }
+}

@@ -1,0 +1,9 @@
+*
+!/meteor-app
+!/package*.json
+!/advanced.webpack.config.js
+!/webpack.config.js
+!/wp-meteor-client
+node_modules
+**/.meteor/local
+/meteor-app/public/wp-build

@@ -1,0 +1,7 @@
+{
+  "meteor": {
+    "mainModule": {
+      "server": "server/main.js"
+    }
+  }
+}
